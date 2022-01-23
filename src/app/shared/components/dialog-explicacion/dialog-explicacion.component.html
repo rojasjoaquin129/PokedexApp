@@ -1,0 +1,24 @@
+<div style="max-width: 400px">
+  <h1 mat-dialog-title style="text-align: center">
+    Aclaración de dar de alta un pokemon:
+  </h1>
+
+  <div mat-dialog-content style="text-align: center">
+    <p>
+      El jueves la api que nos dieron a consumir no funcionaba, así que me di a
+      la tarea de crear una colección de firebase con los 150 primeros pokemones
+      de una api pública. El sabado ya estaba andando la api, pero no se por qué
+      no pude conectarme, algo con "Hace falta la cabecera CORS
+      'Access-Control-Allow-Origin", por eso prodecí a seguir con mi colección
+      de firebase. Por eso mismo, no pude lograr el movimiento para obtener la
+      descripción de cada habilidad como un string (para ver cada descripción de
+      la habilidad, se hace una petición a la api), por ende ya sería
+      innecesario completar este atributo (habilidades), ya que cargaría un
+      error y por falta de tiempo no pude solucionarlo. No Solo eso sino el Id
+      de cada evolucion tambien
+    </p>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Aceptar</button>
+  </div>
+</div>

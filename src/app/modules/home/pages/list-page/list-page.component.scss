@@ -1,0 +1,88 @@
+.butto:hover {
+  transform: scale(1.3);
+}
+.margin {
+  margin-right: 1rem;
+}
+.bg__pokeball {
+  height: 120px;
+  position: absolute;
+  top: 70px;
+  right: -15px;
+  color: #e4e5e2;
+  z-index: -1;
+}
+
+.search {
+  width: 70%;
+}
+
+.pokemon__list {
+  height: 70vh;
+  overflow-y: scroll;
+  &::-webkit-scrollbar-thumb {
+    background: green;
+    border-radius: 50px;
+  }
+}
+.esto {
+  display: flex;
+
+  justify-content: space-between;
+}
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+  background-color: lighten(green, 20%);
+  border-radius: 20px;
+  height: 200px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+}
+
+.card__bg {
+  position: absolute;
+  bottom: 15%;
+  right: 10%;
+  color: white;
+  height: 130px;
+  z-index: 1;
+}
+.colr {
+  color: black;
+}
+
+.card__info {
+  display: flex;
+  flex-direction: column;
+
+  text-transform: capitalize;
+  h2 {
+    border-radius: 40px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: black;
+    font-weight: bold;
+    font-size: 31px;
+  }
+
+  span {
+    border-radius: 40px;
+    text-align: center;
+    margin-top: 5px;
+  }
+}
+
+.card__img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 3.4rem;
+  padding-top: 59px;
+  padding-bottom: 15px;
+  z-index: 10;
+}

@@ -1,0 +1,107 @@
+<mat-progress-bar *ngIf="isLoading" mode="indeterminate"></mat-progress-bar>
+<div class="container mt-5">
+  <div class="row header">
+    <h1 class="title col-sm-12 col-md-12 col-lg-3 col-xl-3">Pokedex</h1>
+    <mat-form-field
+      class="search col-sm-12 col-md-12 col-lg-8 col-xl-8"
+      floatLabel="always"
+    >
+      <mat-label>Pokemon name/type</mat-label>
+      <input
+        matInput
+        placeholder="Filtrar por nombre o tipo"
+        [(ngModel)]="search"
+        (keyup)="filterList()"
+      />
+    </mat-form-field>
+    <div class="col-12">
+      <mat-slide-toggle
+        color="primary"
+        [checked]="classicMode"
+        (change)="classicMode = !classicMode"
+      >
+        {{ classicMode ? "Classic" : "Gif" }}
+      </mat-slide-toggle>
+    </div>
+  </div>
+  <img
+    class="bg__pokeball"
+    src="../../../../../assets/img/pokeball-background.png"
+    alt="pokeball"
+  />
+  <div class="row justify-content-center" *ngIf="isLoading">
+    <div class="col-sm-3 col-md-2">
+      <span>Loading.... please wait!!</span><br />
+
+      <img
+        class="ml-2"
+        src="http://pa1.narvii.com/6261/34f35fa38291907ceab5119011905779f4660933_00.gif"
+        alt=""
+      />
+    </div>
+  </div>
+
+  <div *ngIf="!isLoading" class="row pokemon__list">
+    <div
+      class="col-sm-6 col-md-6 col-lg-4 col-xl-4"
+      *ngFor="let pokemon of pokemonList"
+    >
+      <div class="card {{ 'bg-color-' + pokemon.type + '-light' }}">
+        <img
+          class="card__bg"
+          src="../../../../../assets/img/pokeball-background.png"
+          alt="pokeball-card"
+        />
+        <div class="esto">
+          <div class="card__info">
+            <h2 class="color-white">{{ pokemon.name }}</h2>
+            <span
+              [ngClass]="pokemon.type != ['electric'] ? 'color-white' : 'coldr'"
+              class=" {{ 'bg-color-' + pokemon.type }}"
+              >{{ pokemon.type }}</span
+            >
+            <span
+              [ngClass]="pokemon.type != ['electric'] ? 'color-white' : 'coldr'"
+              class=" {{ 'bg-color-' + pokemon.type }}"
+              >{{ pokemon.lvl }}</span
+            >
+            <div class="mt-5">
+              <button
+                mat-mini-fab
+                matTooltip="Ver Detalle"
+                color="primary"
+                class="margin butto"
+                (click)="view(pokemon.id)"
+              >
+                <mat-icon>search</mat-icon>
+              </button>
+              <button
+                class="butto"
+                mat-mini-fab
+                matTooltip="Editar Pokemon"
+                color="accent"
+                (click)="edit(pokemon.id)"
+              >
+                <mat-icon>edit</mat-icon>
+              </button>
+            </div>
+          </div>
+          <div class="card__img">
+            <img
+              *ngIf="classicMode"
+              [src]="pokemon.image"
+              [alt]="pokemon.name"
+            />
+            <img
+              *ngIf="!classicMode"
+              src="https://projectpokemon.org/images/normal-sprite/{{
+                pokemon.name
+              }}.gif"
+              [alt]="pokemon.name"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

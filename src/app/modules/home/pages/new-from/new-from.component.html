@@ -1,0 +1,86 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <mat-card class="mt-5" style="width: 500px">
+      <mat-card-header>
+        <mat-card-title style="text-align: center">
+          INGRESAR POKEMON
+        </mat-card-title>
+        <hr />
+      </mat-card-header>
+      <form [formGroup]="formGrop" (ngSubmit)="agregar()">
+        <div class="row">
+          <mat-form-field class="col-12" appearance="outline">
+            <mat-label>Nombre</mat-label>
+            <input
+              type="text"
+              formControlName="name"
+              matInput
+              placeholder="ingrese nombre"
+            />
+            <mat-error *ngIf="isValidField('name')">
+              {{ getErrorMessage("name") }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <mat-form-field class="col-12" appearance="outline">
+            <mat-label>Nivel</mat-label>
+            <input
+              type="number"
+              formControlName="lvl"
+              matInput
+              placeholder="ingrese nivel"
+            />
+            <mat-error *ngIf="isValidField('lvl')">
+              {{ getErrorMessage("lvl") }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="row">
+          <div class="col-12" appearance="outline">
+            <mat-label>Tipo</mat-label>
+            <select class="form-control" formControlName="type">
+              <option label="--select something --"></option>
+              <option *ngFor="let item of types$ | async" [value]="item.type">
+                {{ item.type }}
+              </option>
+            </select>
+            <mat-error *ngIf="isValidField('type')">
+              {{ getErrorMessage("type") }}
+            </mat-error>
+          </div>
+        </div>
+
+        <div class="row">
+          <mat-label>Imagen</mat-label>
+          <input
+            (change)="addImg($event)"
+            type="file"
+            accept="image/png,image/jpeg"
+          />
+          <mat-error *ngIf="isValidField('img')">
+            {{ getErrorMessage("img") }}
+          </mat-error>
+        </div>
+        <div class="row justify-content-center" *ngIf="isLoading">
+          <div class="col-sm-12 col-md-6">
+            <span>Loading image.... please wait!!</span>
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <button class="btn btn-info mb-2" type="button" (click)="view()">
+            Antes Que todo Oprima aqui
+          </button>
+          <button
+            class="btn btn-primary mt-3"
+            [disabled]="formGrop.invalid"
+            type="submit"
+          >
+            Aceptar
+          </button>
+        </div>
+      </form>
+    </mat-card>
+  </div>
+</div>
